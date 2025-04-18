@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Python Script",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/Scripts/python.exe",
+            "args": [
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "Runs the currently open Python file using the virtual environment."
+        },
+        {
+            "label": "Run Python Script with Arguments",
+            "type": "shell",
+            "command": "${workspaceFolder}/venv/Scripts/python.exe",
+            "args": [
+                "${file}",
+                "${input:scriptArgs}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [],
+            "detail": "Runs the currently open Python file with additional arguments using the virtual environment."
+        }
+    ],
+    "inputs": [
+        {
+            "id": "scriptArgs",
+            "type": "promptString",
+            "description": "Enter arguments for the Python script"
+        }
+    ]
+}
