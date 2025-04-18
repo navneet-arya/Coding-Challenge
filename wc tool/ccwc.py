@@ -72,6 +72,9 @@ def main():
     if not args.files:
         lines, words, chars = count_file(sys.stdin, args.lines, args.words, args.chars or args.bytes)
         print_results(lines, words, chars, args.lines, args.words, args.chars, args.bytes, "")
+        total_lines += lines
+        total_words += words
+        total_chars += chars
     
     else:
         # check if the files exist
