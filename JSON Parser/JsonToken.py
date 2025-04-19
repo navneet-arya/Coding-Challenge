@@ -24,7 +24,7 @@ class TokenType(Enum):
 class Token:
     """Class representing a token."""
 
-    def __init__(self, type: TokenType, value: str = '', line: int = 1, column: int = 1):
+    def __init__(self, type: TokenType, value = '', line: int = 1, column: int = 1):
         self.type = type
         self.value = value
         self.line = line

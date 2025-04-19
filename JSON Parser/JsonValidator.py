@@ -2,7 +2,7 @@
 
 """
 Build Your Own JSON Parser
-json_validator.py - A simple JSON parser built from scratch
+JsonValidator.py - A simple JSON parser built from scratch
 
 Returns:
     0: Valid JSON
@@ -24,7 +24,6 @@ def validate_json(input_text: str) -> tuple[bool, str]:
     try:
         print("Validating JSON...")
         lexer = JsonLexer(input_text)
-        lexer.number()
         return True, None
     except ValueError as e:
         return False, str(e)
