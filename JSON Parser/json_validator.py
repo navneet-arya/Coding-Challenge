@@ -16,13 +16,15 @@ import sys
 import argparse
 from Error import JSONError
 from JsonLexer import JsonLexer
-from JsonParser import JsonParser
+# from JsonParser import JsonParser
 
 
 def validate_json(input_text: str) -> tuple[bool, str]: 
     """ Validate the JSON data. """
     try:
+        print("Validating JSON...")
         lexer = JsonLexer(input_text)
+        lexer.number()
         return True, None
     except ValueError as e:
         return False, str(e)

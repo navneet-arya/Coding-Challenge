@@ -1,0 +1,49 @@
+{
+    "stringValue": "Hello, World!",
+    "numberValue": 42,
+    "floatValue": 3.14159,
+    "booleanTrue": true,
+    "booleanFalse": false,
+    "nullValue": null,
+    "emptyString": "",
+    "emptyArray": [],
+    "emptyObject": {},
+    "arrayOfValues": [1, "two", false, null],
+    "nestedArray": [[1, 2], ["a", "b"], [true, null]],
+    "objectWithNestedObject": {
+      "name": "Navneet Arya",
+      "age": 30,
+      "address": {
+        "street": "123 Main St",
+        "city": "New Delhi",
+        "zip": "110001"
+      }
+    },
+    "arrayOfObjects": [
+      {
+        "id": 1,
+        "title": "First"
+      },
+      {
+        "id": 2,
+        "title": "Second",
+        "tags": ["json", "test", "example"]
+      }
+    ],
+    "specialCharacters": "This has special characters like \\n, \\t, and Unicode: \u2764",
+    "booleanArray": [true, false, true],
+    "mixedNestedStructure": {
+      "list": [
+        {
+          "key": "value",
+          "innerList": [1, 2, 3]
+        },
+        {
+          "anotherKey": {
+            "deepKey": "deepValue"
+          }
+        }
+      ]
+    }
+  }
+  

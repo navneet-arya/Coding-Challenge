@@ -1,3 +1,4 @@
+# !/usr/bin/env python3
 # Tokenizer for JSON Parser
 
 from enum import Enum

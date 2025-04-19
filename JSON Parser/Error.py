@@ -10,3 +10,6 @@ class JSONError(Exception):
     ERROR_IO = 3
     ERROR_ARGUMENT = 4
     ERROR_UNKNOWN = 5
+
+    def error(message, line, col):
+        raise ValueError(f"Lexer error at line {line}, column {col}: {message}")
