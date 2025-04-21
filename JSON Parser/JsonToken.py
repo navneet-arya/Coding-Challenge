@@ -1,37 +1,35 @@
-# !/usr/bin/env python3
-# Tokenizer for JSON Parser
+#!/usr/bin/env python3
 
-from enum import Enum
+from enum import Enum, auto
 
 
 class TokenType(Enum):
-    """Enum for token types."""
-
-    LEFT_BRACE = '{'
-    RIGHT_BRACE = '}'
-    LEFT_BRACKET = '['
-    RIGHT_BRACKET = ']'
-    COLON = ':'
-    COMMA = ','
-    STRING = 'STRING'
-    NUMBER = 'NUMBER'
-    TRUE = 'TRUE'
-    FALSE = 'FALSE'
-    NULL = 'NULL'
-    EOF = 'EOF'
+    """Token types for JSON lexical analysis."""
+    LEFT_BRACE = auto()  # {
+    RIGHT_BRACE = auto()  # }
+    LEFT_BRACKET = auto()  # [
+    RIGHT_BRACKET = auto()  # ]
+    COLON = auto()  # :
+    COMMA = auto()  # ,
+    STRING = auto()  # "..."
+    NUMBER = auto()  # 123, 123.456, -123, 1.23e+10
+    TRUE = auto()  # true
+    FALSE = auto()  # false
+    NULL = auto()  # null
+    EOF = auto()  # End of file
 
 
 class Token:
-    """Class representing a token."""
+    """Token class for lexical analysis."""
 
-    def __init__(self, type: TokenType, value = '', line: int = 1, column: int = 1):
+    def __init__(self, type, value, line, column):
         self.type = type
         self.value = value
         self.line = line
         self.column = column
 
     def __str__(self):
-        if self.value is not None:
-            return f"{self.type.name}({self.value})"
-        return f"{self.type.name}"
-    
+        return f'Token({self.type.name}, {repr(self.value)}, line={self.line}, col={self.column})'
+
+    def __repr__(self):
+        return self.__str__()

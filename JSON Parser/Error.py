@@ -1,12 +1,11 @@
-# !/user/bin/env python3
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
-""" Contain all the information about the error that can be raised by the parser."""
+from enum import IntEnum
 
-class JSONError(Exception):
-    """Base class for all the JSON errors."""
+class JSONError(IntEnum):
+    """Error codes for the JSON validator."""
+    SUCCESS = 0
     ERROR_SYNTAX = 1
     ERROR_FILE = 2
     ERROR_IO = 3
-    ERROR_ARGUMENT = 4
-    ERROR_UNKNOWN = 5
+    ERROR_ARGS = 4
