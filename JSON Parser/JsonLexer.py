@@ -25,6 +25,8 @@ class JsonLexer:
         self.current_char = self.text[self.pos] if self.text and len(self.text) > 0 else None
         self.line = 1
         self.column = 1
+        self._tokens = None
+        self._token_index = 0
 
     def __str__(self):
         """String representation of the lexer state."""
@@ -80,7 +82,7 @@ class JsonLexer:
         Parse a number according to the JSON specification.
 
         JSON numbers must follow this format:
-        -?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?
+        -?(0|[1-9][0-9]*)(.[0-9]+)?([eE][+-]?[0-9]+)?
 
         Returns:
             A Token object representing the number
@@ -294,14 +296,25 @@ class JsonLexer:
 
         return Token(token_type, value, start_line, start_col)
 
-    def get_next_token(self):
+    def tokenize(self):
         """
-        Return the next token in the input.
-        This method is called by the parser to get tokens one at a time.
+        Primary method: Tokenize the entire input and return all tokens.
+
+        This is the core lexical analysis function. It processes the entire input text
+        and converts it into a sequence of tokens that can be used by a parser.
 
         Returns:
-            The next Token object from the input
+            A list of all tokens in the input
         """
+        # Reset lexer state
+        self.pos = 0
+        self.line = 1
+        self.column = 1
+        self.current_char = self.text[self.pos] if self.text and len(self.text) > 0 else None
+        self._token_index = 0
+
+        tokens = []
+
         while self.current_char is not None:
             # Skip whitespace - only space, tab, CR, LF allowed in JSON
             if self.current_char in {' ', '\t', '\r', '\n'}:
@@ -312,50 +325,61 @@ class JsonLexer:
             if self.current_char == '{':
                 col = self.column
                 self.advance()
-                return Token(TokenType.LEFT_BRACE, '{', self.line, col)
+                tokens.append(Token(TokenType.LEFT_BRACE, '{', self.line, col))
+                continue
 
             if self.current_char == '}':
                 col = self.column
                 self.advance()
-                return Token(TokenType.RIGHT_BRACE, '}', self.line, col)
+                tokens.append(Token(TokenType.RIGHT_BRACE, '}', self.line, col))
+                continue
 
             if self.current_char == '[':
                 col = self.column
                 self.advance()
-                return Token(TokenType.LEFT_BRACKET, '[', self.line, col)
+                tokens.append(Token(TokenType.LEFT_BRACKET, '[', self.line, col))
+                continue
 
             if self.current_char == ']':
                 col = self.column
                 self.advance()
-                return Token(TokenType.RIGHT_BRACKET, ']', self.line, col)
+                tokens.append(Token(TokenType.RIGHT_BRACKET, ']', self.line, col))
+                continue
 
             if self.current_char == ':':
                 col = self.column
                 self.advance()
-                return Token(TokenType.COLON, ':', self.line, col)
+                tokens.append(Token(TokenType.COLON, ':', self.line, col))
+                continue
 
             if self.current_char == ',':
                 col = self.column
                 self.advance()
-                return Token(TokenType.COMMA, ',', self.line, col)
+                tokens.append(Token(TokenType.COMMA, ',', self.line, col))
+                continue
 
             # Handle strings
             if self.current_char == '"':
-                return self.string()
+                tokens.append(self.string())
+                continue
 
             # Handle numbers
             if self.current_char == '-' or self.current_char.isdigit():
-                return self.number()
+                tokens.append(self.number())
+                continue
 
             # Handle literals true, false, null
             if self.current_char == 't':
-                return self._match_literal("true", TokenType.TRUE)
+                tokens.append(self._match_literal("true", TokenType.TRUE))
+                continue
 
             if self.current_char == 'f':
-                return self._match_literal("false", TokenType.FALSE)
+                tokens.append(self._match_literal("false", TokenType.FALSE))
+                continue
 
             if self.current_char == 'n':
-                return self._match_literal("null", TokenType.NULL)
+                tokens.append(self._match_literal("null", TokenType.NULL))
+                continue
 
             # Single quotes are common error - give helpful message
             if self.current_char == "'":
@@ -370,23 +394,28 @@ class JsonLexer:
                 self.line, self.column
             )
 
-        # End of file
-        return Token(TokenType.EOF, None, self.line, self.column)
+        # Add EOF token
+        tokens.append(Token(TokenType.EOF, None, self.line, self.column))
+        self._tokens = tokens
+        return tokens
 
-    def tokenize(self):
+    def get_next_token(self):
         """
-        Tokenize the entire input and return all tokens.
+        Return the next token in the input sequence.
+        This method uses tokenize() to get all tokens and then returns them one by one.
 
         Returns:
-            A list of all tokens in the input
+            The next Token object from the input
         """
-        tokens = []
-        token = self.get_next_token()
+        # If not tokenized yet, do it now
+        if self._tokens is None:
+            self.tokenize()
 
-        while token.type != TokenType.EOF:
-            tokens.append(token)
-            token = self.get_next_token()
-
-        # Add the EOF token
-        tokens.append(token)
-        return tokens
+        # Return current token and advance index
+        if self._token_index < len(self._tokens):
+            token = self._tokens[self._token_index]
+            self._token_index += 1
+            return token
+        else:
+            # Return EOF token if we've gone through all tokens
+            return self._tokens[-1]

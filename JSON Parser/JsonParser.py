@@ -12,10 +12,24 @@ from JsonToken import Token, TokenType
 class JsonParser:
     """Parser for JSON that strictly follows the JSON specification."""
 
-    def __init__(self, lexer):
-        """Initialize the parser with a lexer."""
-        self.lexer = lexer
-        self.current_token = self.lexer.get_next_token()
+    def __init__(self, text_or_lexer):
+        """
+        Initialize the parser with either a text string or a lexer.
+
+        Args:
+            text_or_lexer: Either a JSON string or an initialized JsonLexer instance
+        """
+        # Handle either a string or a lexer object
+        if isinstance(text_or_lexer, str):
+            self.lexer = JsonLexer(text_or_lexer)
+        else:
+            self.lexer = text_or_lexer
+
+        # Tokenize the input - now the primary method for lexical analysis
+        self.tokens = self.lexer.tokenize()
+        self.token_index = 0
+        self.current_token = self.tokens[0] if self.tokens else None
+
         # Track whether we've already parsed a value at the root level
         self.has_parsed_root = False
 
@@ -24,14 +38,23 @@ class JsonParser:
         raise ValueError(
             f"Parser error at line {self.current_token.line}, column {self.current_token.column}: {message}")
 
+    def advance(self):
+        """
+        Advance to the next token in the token stream.
+        """
+        self.token_index += 1
+        if self.token_index < len(self.tokens):
+            self.current_token = self.tokens[self.token_index]
+        return self.current_token
+
     def eat(self, token_type):
         """
         Compare the current token type with the passed token type
-        and if they match, "eat" the current token and assign the next
-        token to self.current_token. Otherwise, raise an exception.
+        and if they match, "eat" the current token and advance to the next one.
+        Otherwise, raise an exception.
         """
         if self.current_token.type == token_type:
-            self.current_token = self.lexer.get_next_token()
+            self.advance()
         else:
             self.error(
                 f"Expected {token_type.name}, got {self.current_token.type.name}"
@@ -76,11 +99,13 @@ class JsonParser:
         elif token.type == TokenType.LEFT_BRACKET:
             return self.array()
         elif token.type == TokenType.STRING:
+            value = token.value
             self.eat(TokenType.STRING)
-            return token.value
+            return value
         elif token.type == TokenType.NUMBER:
+            value = token.value
             self.eat(TokenType.NUMBER)
-            return token.value
+            return value
         elif token.type == TokenType.TRUE:
             self.eat(TokenType.TRUE)
             return True

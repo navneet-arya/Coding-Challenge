@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a6084a3-aee7-41d0-8645-1035f268574c" name="Changes" comment="adding new file">
-      <change beforePath="$PROJECT_DIR$/JSON Parser/Error.py" beforeDir="false" afterPath="$PROJECT_DIR$/JSON Parser/Error.py" afterDir="false" />
+    <list default="true" id="4a6084a3-aee7-41d0-8645-1035f268574c" name="Changes" comment="update the code according.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON Parser/JsonLexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/JSON Parser/JsonLexer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON Parser/JsonParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/JSON Parser/JsonParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JSON Parser/JsonToken.py" beforeDir="false" afterPath="$PROJECT_DIR$/JSON Parser/JsonToken.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JSON Parser/JsonValidator.py" beforeDir="false" afterPath="$PROJECT_DIR$/JSON Parser/JsonValidator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745118028800</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update the code according.">
+      <option name="closed" value="true" />
+      <created>1745241291207</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1745241291207</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,7 +185,8 @@
     <MESSAGE value="updating the code." />
     <MESSAGE value="deleting the __init__.py" />
     <MESSAGE value="adding new file" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding new file" />
+    <MESSAGE value="update the code according." />
+    <option name="LAST_COMMIT_MESSAGE" value="update the code according." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
