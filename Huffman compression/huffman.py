@@ -12,10 +12,43 @@ Steps to be followed:
 from argparse import ArgumentParser, ArgumentError
 import os
 
+def build_binary_tree(frequency):
+    """
+    Build a binary tree from the character frequencies.
+    :param frequency: A dictionary with characters as keys and their frequencies as values.
+    :return: The root node of the binary tree.
+    """
+    
+
+def count_char(text):
+    """
+    Count the frequency of each character in the text.
+    :param text: The input text to be compressed.
+    :return: A dictionary with characters as keys and their frequencies as values.
+    """
+    count = {}
+    for char in text:
+        if char in count:
+            count[char] += 1
+        else:
+            count[char] = 1
+    return count
+
 
 def compress(file):
+    """ Compress the text file using Huffman coding."""
+
     # Read the text
-    with open(file, "r", encoding="utf-8"):
+    with open(file, 'r', encoding='utf-8') as f:
+        text = f.read()
+    
+    # Determine the frequency of each character
+    frequency = count_char(text)
+    print(f"Character frequencies: {frequency}")
+
+    # Build the binary tree from the frequencies
+    build_binary_tree(frequency)
+
 
 
 
@@ -24,12 +57,17 @@ def decompress(file):
 
 
 def valid_path(file):
+    """ Validate the file path."""
+    
     if os.path.exists(file):
         return file
     return ArgumentError(f"Invalid file path: {file}")
 
 
 def main():
+    """ Main function to handle command line arguments and call the appropriate functions."""
+
+    # Create the argument parser
     parser = ArgumentParser(description="Text file compression tool.")
     parser.add_argument("file", help="Enter the filename", type=valid_path, action="store", required=True)
     parser.add_argument("-c", "--compress", action="store_true", help="Flag to compress the file.")
@@ -37,9 +75,9 @@ def main():
 
     args = parser.parse_args()
 
-    if args.c:
+    if args.compress:
         compress(args.file)
-    elif args.d:
+    elif args.decompress:
         decompress(args.file)
 
 
