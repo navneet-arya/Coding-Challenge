@@ -41,7 +41,17 @@ def compress(file):
     print(f"Character frequencies: {frequency}")
 
     # Build the binary tree from the frequencies
-    Tree.build_binary_tree(frequency)
+    tree = Tree(frequency)
+    root = tree.build_binary_tree()
+    print(f"Root of the tree: {root}")
+
+    # print the tree in a readable format
+    tree.print_tree(root)
+
+    # print generate the prefix code for each character
+    codes = tree.get_code(root)
+    print(f"Prefix codes: {codes}")
+
 
 
 
