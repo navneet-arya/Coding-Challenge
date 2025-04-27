@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a6084a3-aee7-41d0-8645-1035f268574c" name="Changes" comment=" improving efficiency and making the code more maintainable.">
+    <list default="true" id="4a6084a3-aee7-41d0-8645-1035f268574c" name="Changes" comment="Adding huffman.py and test.txt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Huffman compression/huffman.py" beforeDir="false" afterPath="$PROJECT_DIR$/Huffman compression/huffman.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +52,7 @@
     "Python.JsonLexer.executor": "Debug",
     "Python.JsonValidator.executor": "Run",
     "Python.JsonValidator.py test.json.executor": "Run",
+    "Python.huffman.executor": "Run",
     "Python.json_validator.executor": "Run",
     "Python.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -66,7 +68,7 @@
       <recent name="C:\Users\navne\PycharmProjects\Coding-Challenge\Huffman compression" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.JsonValidator">
+  <component name="RunManager" selected="Python.huffman">
     <configuration name="JsonValidator" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Coding-Challenge" />
       <option name="ENV_FILES" value="" />
@@ -83,6 +85,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/JSON Parser/JsonValidator.py" />
       <option name="PARAMETERS" value="&quot;C:\Users\navne\PycharmProjects\Coding-Challenge\JSON Parser\test.json&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="huffman" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Coding-Challenge" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Huffman compression" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Huffman compression/huffman.py" />
+      <option name="PARAMETERS" value="&quot;C:\Users\navne\PycharmProjects\Coding-Challenge\Huffman compression\test.txt&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -114,10 +138,12 @@
     </configuration>
     <list>
       <item itemvalue="Python.JsonValidator" />
+      <item itemvalue="Python.huffman" />
       <item itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.huffman" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -178,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745242998409</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Adding huffman.py and test.txt">
+      <option name="closed" value="true" />
+      <created>1745690295394</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1745690295394</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,7 +232,8 @@
     <MESSAGE value="adding new file" />
     <MESSAGE value="update the code according." />
     <MESSAGE value=" improving efficiency and making the code more maintainable." />
-    <option name="LAST_COMMIT_MESSAGE" value=" improving efficiency and making the code more maintainable." />
+    <MESSAGE value="Adding huffman.py and test.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding huffman.py and test.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

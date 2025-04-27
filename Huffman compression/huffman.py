@@ -10,14 +10,8 @@ Steps to be followed:
 """
 
 from argparse import ArgumentParser, ArgumentError
+from utils import Tree
 import os
-
-def build_binary_tree(frequency):
-    """
-    Build a binary tree from the character frequencies.
-    :param frequency: A dictionary with characters as keys and their frequencies as values.
-    :return: The root node of the binary tree.
-    """
     
 
 def count_char(text):
@@ -47,7 +41,7 @@ def compress(file):
     print(f"Character frequencies: {frequency}")
 
     # Build the binary tree from the frequencies
-    build_binary_tree(frequency)
+    Tree.build_binary_tree(frequency)
 
 
 
@@ -69,8 +63,8 @@ def main():
 
     # Create the argument parser
     parser = ArgumentParser(description="Text file compression tool.")
-    parser.add_argument("file", help="Enter the filename", type=valid_path, action="store", required=True)
-    parser.add_argument("-c", "--compress", action="store_true", help="Flag to compress the file.")
+    parser.add_argument("file", help="Enter the filename", type=valid_path, action="store")
+    parser.add_argument("-c", "--compress", action="store_true", help="Flag to compress the file.", default=True)
     parser.add_argument("-d", "--decompress", action="store_true", help="Flag to decompress the file.")
 
     args = parser.parse_args()
