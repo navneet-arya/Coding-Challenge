@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a6084a3-aee7-41d0-8645-1035f268574c" name="Changes" comment="Adding huffman.py and test.txt">
+      <change afterPath="$PROJECT_DIR$/Huffman compression/test2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Huffman compression/huffman.py" beforeDir="false" afterPath="$PROJECT_DIR$/Huffman compression/huffman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Huffman compression/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Huffman compression/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,22 +49,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.JsonLexer.executor": "Debug",
-    "Python.JsonValidator.executor": "Run",
-    "Python.JsonValidator.py test.json.executor": "Run",
-    "Python.huffman.executor": "Run",
-    "Python.json_validator.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/navne/PycharmProjects/Coding-Challenge/JSON Parser/json_validator.py",
-    "settings.editor.selected.configurable": "settings.qodana"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.JsonLexer.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.JsonValidator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.JsonValidator.py test.json.executor&quot;: &quot;Run&quot;,
+    &quot;Python.huffman.executor&quot;: &quot;Run&quot;,
+    &quot;Python.json_validator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/navne/PycharmProjects/Coding-Challenge/JSON Parser/json_validator.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.qodana&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\navne\PycharmProjects\Coding-Challenge\Huffman compression" />
@@ -106,7 +108,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Huffman compression/huffman.py" />
-      <option name="PARAMETERS" value="&quot;C:\Users\navne\PycharmProjects\Coding-Challenge\Huffman compression\test.txt&quot;" />
+      <option name="PARAMETERS" value="&quot;C:\Users\navne\PycharmProjects\Coding-Challenge\Huffman compression\test2.txt&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
