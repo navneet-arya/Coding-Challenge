@@ -11,6 +11,7 @@ Steps to be followed:
 import logging
 import pickle
 import struct
+import sys
 from argparse import ArgumentParser, ArgumentError
 from utils import Tree
 import os
@@ -131,11 +132,73 @@ class HuffmanCompressor:
                 count[char] = 1
         return count
 
+    @staticmethod
+    def decompress(byte_array, root, padding):
+        """Decompress the bytes array using the given Huffman tree."""
+        bit_string = ''
+        for byte in byte_array:
+            bits = bin(byte)[2:].zfill(8)
+            bit_string += bits
+
+        # Remove padding
+        if padding > 0:
+            bit_string = bit_string[:-padding]
+
+        # Decode the bit string
+        decoded = []
+        current_node = root
+
+        for bit in bit_string:
+            if bit == '0':
+                current_node = current_node.left
+            else:
+                current_node = current_node.right
+
+            if current_node.char:
+                decoded.append(current_node.char)
+                current_node = root
+        return ''.join(decoded)
 
 
+    @staticmethod
+    def decompress_file(input_file, output_file=None):
+        """Decompress a file compressed with Huffman coding."""
 
-def decompress(file):
-    pass
+        if not output_file:
+            if input_file.endswith('.huff'):
+                output_file = input_file[:-5]
+            else:
+                output_file = input_file
+
+        try:
+            with open(input_file, 'rb') as f:
+                # check if it's a text file
+                is_text = struct.unpack('?', f.read(1))[0]
+                padding = struct.unpack('B', f.read(1))[0]
+
+                # Read Huffman tree
+                tree_size = struct.unpack('I', f.read(4))[0]
+                pickle_tree = f.read(tree_size)
+                root = pickle.loads(pickle_tree)
+
+                # Read the compressed data
+                byte_array = bytearray(f.read())
+
+            # Decompress the data
+            decoded = HuffmanCompressor.decompress(byte_array, root, padding)
+
+            with open(output_file, 'wb') as f:
+                if is_text:
+                    f.write(decoded.encode('utf-8'))
+                else:
+                    f.write(decoded)
+
+            logging.info(f'File decompressed successfully to {output_file}')
+            return output_file
+
+        except Exception as e:
+            logging.error(f'Got Error while decompression')
+            sys.exit(1)
 
 
 def valid_path(file):
@@ -152,7 +215,7 @@ def main():
     # Create the argument parser
     parser = ArgumentParser(description="Text file compression tool.")
     parser.add_argument("file", help="Enter the filename", type=valid_path, action="store")
-    parser.add_argument("-c", "--compress", action="store_true", help="Flag to compress the file.", default=True)
+    parser.add_argument("-c", "--compress", action="store_true", help="Flag to compress the file.")
     parser.add_argument("-d", "--decompress", action="store_true", help="Flag to decompress the file.")
     parser.add_argument("-o", "--output", help="Pass the output filename")
     args = parser.parse_args()
@@ -160,7 +223,7 @@ def main():
     if args.compress:
         HuffmanCompressor.compress_file(args.file, args.output)
     elif args.decompress:
-        decompress(args.file)
+        HuffmanCompressor.decompress_file(args.file, args.output)
 
 
 
