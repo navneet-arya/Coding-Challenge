@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4a6084a3-aee7-41d0-8645-1035f268574c" name="Changes" comment="Compression works properly and also add logging">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Huffman compression/huffman.py" beforeDir="false" afterPath="$PROJECT_DIR$/Huffman compression/huffman.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Huffman compression/test2.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
